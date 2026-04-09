@@ -48,23 +48,23 @@ Por isso, as fórmulas foram implementadas da seguinte forma:
 
 Meta1
 
-julgados / (casos_novos + dessobrestados + suspensos) * 100
+>julgados / (casos_novos + dessobrestados + suspensos) * 100
 
 Meta2A
 
-julgm2_a / (distm2_a + suspm2_a) * 100
+>julgm2_a / (distm2_a + suspm2_a) * 100
 
 Meta2Ant
 
-julgm2_ant / (distm2_ant + suspm2_ant + desom2_ant) * 100
+>julgm2_ant / (distm2_ant + suspm2_ant + desom2_ant) * 100
 
 Meta4A
 
-julgm4_a / (distm4_a + suspm4_a) * 100
+>julgm4_a / (distm4_a + suspm4_a) * 100
 
 Meta4B
 
-julgm4_b / (distm4_b + suspm4_b) * 100
+>julgm4_b / (distm4_b + suspm4_b) * 100
 
 ✔ Implementação fiel ao enunciado, mesmo com distorção matemática.
 
