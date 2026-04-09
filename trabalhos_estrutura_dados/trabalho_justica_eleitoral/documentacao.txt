@@ -1,0 +1,59 @@
+PROJETO: Manipulacao de arquivos CSV da Justica Eleitoral em C
+
+1. Estrutura do projeto
+- lista.h  -> declaracoes do TAD Lista, struct Registro e prototipos das funcoes
+- lista.c  -> implementacao do TAD Lista, leitura dos CSVs e funcoes pedidas na atividade
+- main.c   -> interface de menu no console
+
+2. Requisitos atendidos
+Item 1) Concatenacao dos arquivos CSV da pasta "Base de Dados"
+- Funcao: concatenarArquivos
+- Saida: base_concatenada.csv
+
+Item 2) Resumo por sigla_tribunal
+- Funcao: gerarResumoPorTribunal
+- Saida: resumo_tribunais.csv
+- Campos gerados: total_julgados_2026, Meta1, Meta2A, Meta2Ant, Meta4A e Meta4B
+
+Observacao importante:
+A atividade pede explicitamente para trocar todas as subtracoes por adicoes nos calculos.
+Por isso, as formulas foram implementadas assim:
+- Meta1    = julgados / (casos_novos + dessobrestados + suspensos) * 100
+- Meta2A   = julgm2_a / (distm2_a + suspm2_a) * 100
+- Meta2Ant = julgm2_ant / (distm2_ant + suspm2_ant + desom2_ant) * 100
+- Meta4A   = julgm4_a / (distm4_a + suspm4_a) * 100
+- Meta4B   = julgm4_b / (distm4_b + suspm4_b) * 100
+
+Item 3) Geracao de arquivo por municipio
+- Funcao: gerarArquivoPorMunicipio
+- Entrada: municipio informado pelo usuario
+- Saida: MUNICIPIO.txt
+- O professor pediu originalmente CSV, mas a instrucao enviada depois foi gerar TXT.
+- O conteudo do TXT permanece em formato CSV, apenas com extensao .txt.
+
+3. Como compilar no Windows (GCC/MinGW)
+Comando:
+gcc main.c lista.c -o trabalho.exe
+
+4. Como executar
+- Coloque os 3 arquivos fonte na mesma pasta.
+- Coloque a pasta "Base de Dados" no mesmo diretorio do executavel.
+- Execute o programa.
+- Escolha a opcao desejada no menu.
+
+5. Como o programa funciona internamente
+- Todos os CSVs da pasta sao carregados para memoria usando o TAD Lista.
+- Cada linha vira um Registro armazenado em um no da lista encadeada.
+- A leitura do CSV trata campos entre aspas.
+- O campo linha_original guarda a linha original do arquivo para reaproveitar na exportacao por municipio.
+
+6. Observacoes tecnicas
+- O separador real da base enviada e virgula, nao ponto e virgula.
+- O cabecalho aparece em todos os arquivos, entao ele e ignorado na leitura individual.
+- O programa considera comparacao de municipio sem diferenciar minusculas/maiusculas.
+- Se o denominador de alguma meta for zero, a meta gerada sera 0.00 para evitar divisao por zero.
+
+7. Exemplo de uso
+Opcao 1 -> gera base_concatenada.csv
+Opcao 2 -> gera resumo_tribunais.csv
+Opcao 3 -> usuario digita MACAPA -> gera MACAPA.txt
